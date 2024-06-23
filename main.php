@@ -3,12 +3,23 @@ use Swoole\Coroutine;
 use function Swoole\Coroutine\run;
 use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
+
 require './config.php';
+//加载composer依赖
 require_once('vendor/autoload.php');
-$list = glob('inc/*.php');
-foreach ($list as $file) {
-    require $file;
-}
+//加载inc
+//没有找到更好的autoload能在源码和phar中一起运行的方式，如果有欢迎pr!
+require_once('inc/api.php');
+require_once('inc/cluster.php');
+require_once('inc/database.php');
+require_once('inc/mlog.class.php');
+require_once('inc/PluginInfoInterface.php');
+require_once('inc/pluginsmanager.php');
+require_once('inc/server.php');
+require_once('inc/socketio.php');
+require_once('inc/token.php');
+require_once('inc/webapi.php');
+
 api::getconfig($config);
 const PHPOBAVERSION = '1.6.0';
 const VERSION = '1.10.9';
