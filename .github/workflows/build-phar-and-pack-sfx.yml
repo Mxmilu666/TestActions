@@ -54,7 +54,16 @@ jobs:
         cd static-php-cli
         composer update
         ./bin/spc doctor --auto-fix
-        bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd
+        bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd,phar,curl
         bin/spc download --all --with-php=8.3
 
+    - name: Build micro
+      run: |
+        bin/spc build phar,curl,swoole,zstd,pcntl --build-micro --with-micro-fake-cli
+        bin/spc micro:combine php-openbmclapi.phar -O /build/php-openbmclapi-linux-x86_64
 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: php-openbmclapi-linux-x86_64
+        path: /build/php-openbmclapi-linux-x86_64
