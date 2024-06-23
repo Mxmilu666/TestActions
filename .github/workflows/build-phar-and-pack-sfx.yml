@@ -61,10 +61,10 @@ jobs:
       run: |
         cd static-php-cli
         bin/spc build phar,curl,swoole,zstd,pcntl --build-micro --with-micro-fake-cli
-        bin/spc micro:combine ../php-openbmclapi.phar -O ./build/php-openbmclapi-linux-x86_64
+        bin/spc micro:combine ../php-openbmclapi.phar -O build/php-openbmclapi-linux-x86_64
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: php-openbmclapi-linux-x86_64
-        path: ./build/php-openbmclapi-linux-x86_64
+        path: ./static-php-cli/build/php-openbmclapi-linux-x86_64
