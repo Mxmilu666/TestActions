@@ -1,5 +1,4 @@
 <?php
-require_once('./vendor/autoload.php');
 use Swoole\Coroutine;
 use Swoole\Coroutine\Http\Client;
 use Dariuszp\CliProgressBar;
