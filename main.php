@@ -5,8 +5,8 @@ use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
 require './config.php';
 if (Phar::running()) {
-    require_once('phar://' . __FILE__ .'/vendor/autoload.php');
-    $list = glob('phar://' . __FILE__ .'/inc/*.php');
+    require_once('vendor/autoload.php');
+    $list = glob('inc/*.php');
     foreach ($list as $file) {
         require $file;
     }
