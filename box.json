@@ -1,5 +1,4 @@
 {
-    "stub": "main.php",
     "main": "main.php",
     "output": "build/php-openbmclapi.phar",
     "finder": [
