@@ -3,11 +3,19 @@ use Swoole\Coroutine;
 use function Swoole\Coroutine\run;
 use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
-require_once(__DIR__ . 'vendor/autoload.php');
 require './config.php';
-$list = glob(__DIR__ . 'inc/*.php');
-foreach ($list as $file) {
-    require $file;
+if (Phar::running()) {
+    require_once('phar://' . __FILE__ .'/vendor/autoload.php');
+    $list = glob('phar://' . __FILE__ .'/inc/*.php');
+    foreach ($list as $file) {
+        require $file;
+    }
+} else {
+    require_once('vendor/autoload.php');
+    $list = glob('inc/*.php');
+    foreach ($list as $file) {
+        require $file;
+    }
 }
 api::getconfig($config);
 const PHPOBAVERSION = '1.6.0';
