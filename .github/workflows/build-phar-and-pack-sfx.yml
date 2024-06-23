@@ -2,6 +2,9 @@ name: Build Phar and Pack sfx
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build-phar:
