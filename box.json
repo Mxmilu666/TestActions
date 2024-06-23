@@ -1,0 +1,18 @@
+{
+    "stub": ".main.php",
+    "main": true,
+    "output": "build/php-openbmclapi.phar",
+    "finder": [
+          {
+              "notName": "/LICENSE|.*\\.md|.*\\.dist|Makefile|composer\\.json|composer\\.lock/",
+              "exclude": [
+                  "vendor-bin"
+              ],
+              "in": "vendor"
+          },
+          {
+              "name": ".*\\.php",
+              "in": "inc"
+          }
+    ]
+}
