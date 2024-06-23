@@ -3,8 +3,9 @@ use Swoole\Coroutine;
 use function Swoole\Coroutine\run;
 use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
+require_once($_DIR_ . 'vendor/autoload.php');
 require './config.php';
-$list = glob('inc/*.php');
+$list = glob($_DIR_ . 'inc/*.php');
 foreach ($list as $file) {
     require $file;
 }
