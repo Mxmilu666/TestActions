@@ -4,18 +4,10 @@ use function Swoole\Coroutine\run;
 use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
 require './config.php';
-if (Phar::running()) {
-    require_once('vendor/autoload.php');
-    $list = glob('inc/*.php');
-    foreach ($list as $file) {
-        require $file;
-    }
-} else {
-    require_once('vendor/autoload.php');
-    $list = glob('inc/*.php');
-    foreach ($list as $file) {
-        require $file;
-    }
+require_once('vendor/autoload.php');
+$list = glob('inc/*.php');
+foreach ($list as $file) {
+    require $file;
 }
 api::getconfig($config);
 const PHPOBAVERSION = '1.6.0';
