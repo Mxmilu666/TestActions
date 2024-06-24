@@ -19,6 +19,14 @@ jobs:
         php-version: '8.3'
         tools: box
 
+    - name: Install composer
+      run: composer install
+      shell: /usr/bin/bash -e {0}
+      env:
+        COMPOSER_PROCESS_TIMEOUT: 0
+        COMPOSER_NO_INTERACTION: 1
+        COMPOSER_NO_AUDIT: 1
+
     - name: Run box compile
       run: box compile
       shell: /usr/bin/bash -e {0}
@@ -48,13 +56,13 @@ jobs:
         cd static-php-cli
         composer update
         ./bin/spc doctor --auto-fix
-        bin/spc download --for-extensions=openssl,swoole,zip,pcntl,zstd,phar,curl
+        bin/spc download --for-extensions=openssl,swoole,zstd,phar,curl
         bin/spc download --all --with-php=8.3
 
     - name: Build micro
       run: |
         cd static-php-cli
-        bin/spc build phar,curl,swoole,zstd,pcntl --build-micro --with-micro-fake-cli
+        bin/spc build phar,curl,swoole,zstd,openssl --build-micro
 
     - name: Download Phar Artifact
       uses: actions/download-artifact@v2
