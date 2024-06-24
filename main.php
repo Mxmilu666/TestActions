@@ -6,19 +6,19 @@ date_default_timezone_set('Asia/Shanghai');
 
 require './config.php';
 //加载composer依赖
-require_once('vendor/autoload.php');
+require_once(__DIR__ . '/vendor/autoload.php');
 //加载inc
 //没有找到更好的autoload能在源码和phar中一起运行的方式，如果有欢迎pr!
-require_once('inc/api.php');
-require_once('inc/cluster.php');
-require_once('inc/database.php');
-require_once('inc/mlog.class.php');
-require_once('inc/PluginInfoInterface.php');
-require_once('inc/pluginsmanager.php');
-require_once('inc/server.php');
-require_once('inc/socketio.php');
-require_once('inc/token.php');
-require_once('inc/webapi.php');
+require_once(__DIR__ . '/inc/api.php');
+require_once(__DIR__ . '/inc/cluster.php');
+require_once(__DIR__ . '/inc/database.php');
+require_once(__DIR__ . '/inc/mlog.class.php');
+require_once(__DIR__ . '/inc/PluginInfoInterface.php');
+require_once(__DIR__ . '/inc/pluginsmanager.php');
+require_once(__DIR__ . '/inc/server.php');
+require_once(__DIR__ . '/inc/socketio.php');
+require_once(__DIR__ . '/inc/token.php');
+require_once(__DIR__ . '/inc/webapi.php');
 
 api::getconfig($config);
 const PHPOBAVERSION = '1.6.0';
