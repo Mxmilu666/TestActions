@@ -63,7 +63,7 @@ jobs:
     - name: Build micro
       run: |
         cd static-php-cli
-        bin/spc curl,openssl,phar,swoole,zstd --build-micro --with-micro-fake-cli --with-upx-pack
+        bin/spc build curl,openssl,phar,swoole,zstd --build-micro --with-micro-fake-cli --with-upx-pack
 
     - name: Download Phar Artifact
       uses: actions/download-artifact@v2
