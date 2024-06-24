@@ -5,8 +5,6 @@ use function Swoole\Timer;
 date_default_timezone_set('Asia/Shanghai');
 
 require './config.php';
-//加载composer依赖
-require_once(__DIR__ . '/vendor/autoload.php');
 //加载inc
 //没有找到更好的autoload能在源码和phar中一起运行的方式，如果有欢迎pr!
 require_once(__DIR__ . '/inc/api.php');
