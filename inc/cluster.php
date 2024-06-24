@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/vendor/autoload.php');
+require(dirname(__DIR__) . '/vendor/autoload.php');
 use Swoole\Coroutine;
 use Swoole\Coroutine\Http\Client;
 use Dariuszp\CliProgressBar;
