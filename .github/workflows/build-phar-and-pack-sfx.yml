@@ -27,7 +27,7 @@ jobs:
         COMPOSER_NO_INTERACTION: 1
         COMPOSER_NO_AUDIT: 1
 
-    - name: Upload Artifact
+    - name: Upload Phar
       uses: actions/upload-artifact@v2
       with:
         name: php-openbmclapi-phar
@@ -65,10 +65,12 @@ jobs:
     - name: Pack phar
       run: |
         cd static-php-cli
-        bin/spc micro:combine php-openbmclapi.phar -O /build/php-openbmclapi-linux-x86_64
+        bin/spc micro:combine php-openbmclapi.phar --output=php-openbmclapi-linux-x86_64
 
-    - name: Upload Artifact
+    - name: Upload sfx
       uses: actions/upload-artifact@v2
       with:
         name: php-openbmclapi-linux-x86_64
-        path: ./static-php-cli/build/php-openbmclapi-linux-x86_64
+        path: |
+          ./static-php-cli/php-openbmclapi-linux-x86_64
+          ./static-php-cli/buildroot/license
