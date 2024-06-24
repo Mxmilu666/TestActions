@@ -55,15 +55,13 @@ jobs:
         git clone https://github.com/crazywhalecc/static-php-cli.git
         cd static-php-cli
         composer update
-        ./bin/spc doctor --auto-fix
-        bin/spc download --for-extensions=openssl,swoole,zstd,phar,curl
-        bin/spc download --all --with-php=8.3
-        bin/spc install-pkg upx
+        bin/spc doctor --auto-fix
+        bin/spc download --for-extensions=openssl,swoole,zip,pcntl,phar,zstd --with-php=8.3
 
     - name: Build micro
       run: |
         cd static-php-cli
-        bin/spc build curl,openssl,phar,swoole,zstd --build-micro --with-micro-fake-cli --with-upx-pack
+        bin/spc build curl,openssl,phar,swoole,zstd --build-micro --with-micro-fake-cli
 
     - name: Download Phar Artifact
       uses: actions/download-artifact@v2
