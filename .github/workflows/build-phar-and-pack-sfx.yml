@@ -58,11 +58,12 @@ jobs:
         ./bin/spc doctor --auto-fix
         bin/spc download --for-extensions=openssl,swoole,zstd,phar,curl
         bin/spc download --all --with-php=8.3
+        bin/spc install-pkg upx
 
     - name: Build micro
       run: |
         cd static-php-cli
-        bin/spc build phar,curl,swoole,zstd,openssl --build-micro
+        bin/spc curl,openssl,swoole,zstd --build-micro --with-micro-fake-cli --with-upx-pack
 
     - name: Download Phar Artifact
       uses: actions/download-artifact@v2
