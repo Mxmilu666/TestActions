@@ -46,22 +46,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Setup PHP
-      run: |
-        git clone https://github.com/crazywhalecc/static-php-cli.git
-        cd static-php-cli
-        bin/setup-runtime
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
 
     - name: Setup static-php-cli
       run: |
+        git clone https://github.com/crazywhalecc/static-php-cli.git
         cd static-php-cli
-        bin/php bin/composer update
-        bin/php bin/spc doctor --auto-fix
-        bin/php bin/spc download --with-php=8.1 --for-extensions "curl,openssl,phar,swoole,zlib,zstd"
+        composer update
+        bin/spc doctor --auto-fix
+        bin/spc download --with-php=8.1 --for-extensions "curl,openssl,phar,swoole,zlib,zstd"
 
     - name: Build micro
       run: |
         cd static-php-cli
-        bin/php bin/spc build --build-micro --with-micro-fake-cli "curl,openssl,phar,swoole,zlib,zstd"
+        bin/spc build --build-micro "curl,openssl,phar,swoole,zlib,zstd"
 
     - name: Download Phar Artifact
       uses: actions/download-artifact@v2
@@ -72,7 +72,7 @@ jobs:
     - name: Pack phar
       run: |
         cd static-php-cli
-        bin/php bin/spc micro:combine php-openbmclapi.phar --output=php-openbmclapi-linux-x86_64
+        bin/spc micro:combine php-openbmclapi.phar --output=php-openbmclapi-linux-x86_64
 
     - name: Upload sfx
       uses: actions/upload-artifact@v2
