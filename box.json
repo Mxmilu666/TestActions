@@ -11,5 +11,5 @@
       "vendor"
     ],
     "git-commit-short": "git_commit_short",
-    "output": "php-openbmclapi.phar"
+    "output": "build/php-openbmclapi.phar"
   }
