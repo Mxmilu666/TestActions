@@ -1,16 +1,15 @@
 {
+    "alias": "php-openbmclapi.phar",
     "main": "main.php",
-    "output": "build/php-openbmclapi.phar",
-    "finder": [
-          {
-              "notName": "/LICENSE|.*\\.md|.*\\.dist|Makefile|composer\\.json|composer\\.lock/",
-              "exclude": [
-                  "vendor-bin"
-              ],
-              "in": "vendor"
-          },
-          {
-              "in": "inc"
-          }
-    ]
-}
+    "banner": false,
+    "blacklist": [
+      ".github"
+    ],
+    "compression": "GZ",
+    "directories": [
+      "inc",
+      "vendor"
+    ],
+    "git-commit-short": "git_commit_short",
+    "output": "php-openbmclapi.phar"
+  }
