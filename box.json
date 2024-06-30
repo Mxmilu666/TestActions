@@ -5,6 +5,7 @@
     "blacklist": [
       ".github"
     ],
+    "compression": "GZ",
     "directories": [
       "inc",
       "vendor"

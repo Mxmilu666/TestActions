@@ -34,7 +34,7 @@ class ParseFileList {
         $totalFiles = $this->readLong($memoryStream);
         $bar = new CliProgressBar($totalFiles);
         $bar->setDetails("[ParseFileList]");
-        $bar->display();
+        $bar->displayAlternateProgressBar();
 
         for ($i = 0; $i < $totalFiles; $i++) {
             global $shouldExit;
@@ -50,7 +50,7 @@ class ParseFileList {
             $bar->progress();
         }
         fclose($memoryStream);
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $bar->end();
         return $this->files;
     }
@@ -212,7 +212,7 @@ class download {
     public function downloadFiles() {
         $bar = new CliProgressBar(count($this->filesList));
         $bar->setDetails("[Downloader][线程数:{$this->maxConcurrent}]");
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         foreach ($this->filesList as $file) {
             global $shouldExit;
             if ($shouldExit) {
@@ -241,7 +241,7 @@ class download {
         for ($i = 0; $i < $this->maxConcurrent; $i++) {
             $this->semaphore->push(true);
         }
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $bar->end();
     }
 
@@ -289,7 +289,7 @@ class FilesCheck {
         mlog("检查策略:hash");
         $bar = new CliProgressBar(count($this->filesList));
         $bar->setDetails("[FileCheck]");
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $download_dir = api::getconfig()['file']['cache_dir'];
         foreach ($this->filesList as $file) {
             global $shouldExit;
@@ -317,7 +317,7 @@ class FilesCheck {
             }
         $bar->progress();
         }
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $bar->end();
         return $this->Missfile;
     }
@@ -326,7 +326,7 @@ class FilesCheck {
         mlog("检查策略:size");
         $bar = new CliProgressBar(count($this->filesList));
         $bar->setDetails("[FileCheck]");
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $download_dir = api::getconfig()['file']['cache_dir'];
         foreach ($this->filesList as $file) {
             global $shouldExit;
@@ -354,7 +354,7 @@ class FilesCheck {
             }
         $bar->progress();
         }
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $bar->end();
         return $this->Missfile;
     }
@@ -363,7 +363,7 @@ class FilesCheck {
         mlog("检查策略:exists");
         $bar = new CliProgressBar(count($this->filesList));
         $bar->setDetails("[FileCheck]");
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $download_dir = api::getconfig()['file']['cache_dir'];
         foreach ($this->filesList as $file) {
             global $shouldExit;
@@ -381,7 +381,7 @@ class FilesCheck {
             }
         $bar->progress();
         }
-        $bar->display();
+        $bar->displayAlternateProgressBar();
         $bar->end();
         return $this->Missfile;
     }
